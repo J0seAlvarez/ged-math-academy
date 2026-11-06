@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123454"><meta name="description" content="Profesor Cristóbal te ayuda a prepararte para el GED de matemáticas."><title>GED Math Academy | Profesor Cristóbal</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#17304d;background:#f3f7fc}*{box-sizing:border-box}body{margin:0}header{background:#123454;color:#fff;padding:16px max(16px,calc((100vw - 1060px)/2));display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}header b{font-size:1.15rem}header b span{color:#77e2d1}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:11px 16px;background:#1763bd;color:white;font-weight:650}button:disabled{opacity:.5;cursor:default}.ghost{background:#e9f2fd;color:#174b84}.light{background:transparent;border:1px solid #9db3cb;color:white}main{max-width:1060px;margin:25px auto;padding:0 16px}.hero{background:linear-gradient(115deg,#123454,#137d89);border-radius:20px;color:white;padding:32px;margin-bottom:17px}.hero h1{font-size:clamp(1.65rem,4vw,2.75rem);margin:0 0 12px}.hero p{max-width:670px;line-height:1.65}.card{background:#fff;border:1px solid #dce6f1;border-radius:16px;padding:23px;margin:16px 0;box-shadow:0 4px 19px #102c4d09}.flex{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.tile{border:1px solid #dbe6f1;border-radius:12px;padding:17px;background:#fbfdff}.muted{color:#627a90}.chip{background:#e2fbf3;border-radius:99px;color:#116755;padding:5px 10px;font-size:.8rem;font-weight:700}.answer{display:block;width:100%;text-align:left;background:#f7fafd;color:#17304d;border:1px solid #d5e2ef;margin:8px 0}.answer.chosen{border-color:#1763bd;background:#dcecff}.answer.correct{border-color:#10a079;background:#e0f9ed}.answer.wrong{border-color:#d35c54;background:#fff0ed}input,select{border:1px solid #b8cbda;border-radius:9px;padding:11px;max-width:100%}label{display:block;margin:9px 0;font-weight:650}progress{width:100%;height:13px;accent-color:#16847d}h2{margin-top:0}.study{padding:11px;border-left:4px solid #159388;background:#eefaf7;margin:9px 0;border-radius:5px}.chat{max-height:350px;overflow:auto;border:1px solid #dce6ee;background:#fafcff;padding:13px;border-radius:12px;min-height:120px}.bubble{margin:10px 0;padding:12px;border-radius:12px;line-height:1.5;max-width:85%}.bot{background:#e4f4f4}.student{background:#e7edfc;margin-left:auto}.small{font-size:.87rem}.hidden{display:none}footer{text-align:center;padding:25px;color:#627a90}table{border-collapse:collapse;width:100%;font-size:.9rem}td,th{padding:9px;border-bottom:1px solid #e0e7ee;text-align:left}a{color:#1763bd}@media(max-width:600px){.card{padding:16px}.hero{padding:22px}.bubble{max-width:96%}}
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+:root{--ink:#242758;--purple:#6758dc;--mint:#1ac3ad;--yellow:#ffdb69;--pink:#ff81ac;font-family:'Outfit',system-ui,sans-serif;color:var(--ink);background:#f8f8ff}
+body{background:radial-gradient(circle at 95% 4%,#ece3ff,transparent 35%),radial-gradient(circle at 0% 65%,#d9fff3,transparent 40%),#f9faff}
+header{background:#26255e;box-shadow:0 5px 0 #c5bafc;padding-top:18px;padding-bottom:18px}
+header b{font-size:1.3rem;letter-spacing:-.035em}
+header b span{color:#8bffe7}
+header .light{border-radius:99px;border:1px solid #a8a1eb}
+main{max-width:1080px;margin-top:32px}
+.hero{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(115deg,#30337e,#6752d5 69%,#d850a0);border:3px solid #34317d;border-radius:28px;padding:50px 40px;box-shadow:8px 9px 0 #cbc3ff;margin-bottom:28px}
+.hero:before{content:"";position:absolute;inset:-40px;background-image:linear-gradient(#ffffff18 1px,transparent 1px),linear-gradient(90deg,#ffffff18 1px,transparent 1px);background-size:36px 36px;transform:rotate(-8deg);z-index:-1}
+.hero:after{content:"✦   x²   ÷   π";position:absolute;right:3%;top:11%;font-size:clamp(28px,5vw,62px);font-weight:800;letter-spacing:14px;color:#ffe084;opacity:.8;transform:rotate(14deg);max-width:220px;line-height:1.8;animation:mathFloat 5s ease-in-out infinite;pointer-events:none}
+.hero h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.07;letter-spacing:-.045em;max-width:660px;position:relative;z-index:1}
+.hero p{max-width:600px;color:#f2f0ff;font-size:1.1rem;position:relative;z-index:1}
+.hero .chip{background:#ffda63;color:#373076;border:2px solid #ffeb9b;display:inline-block;margin-bottom:14px}
+.card{border:2px solid #e3e1f9;border-radius:24px;box-shadow:5px 6px 0 #e6e2fa;padding:27px;margin:22px 0}
+h2{font-size:1.65rem;letter-spacing:-.025em}
+button{border-radius:13px;border:2px solid #4544b8;background:#655be8;box-shadow:3px 4px 0 #36339b;font-family:'Outfit',system-ui;font-weight:700;transition:transform .15s,box-shadow .15s}
+button:hover:not(:disabled){transform:translateY(-2px);box-shadow:4px 6px 0 #36339b;background:#5145d1}
+button:focus-visible,input:focus-visible{outline:3px solid #ffbc44;outline-offset:2px}
+button.ghost{background:#eeecff;border-color:#c7c5f5;color:#4a43b3;box-shadow:3px 4px 0 #e1ddff}
+button.ghost:hover:not(:disabled){background:#e2dcff;box-shadow:4px 6px 0 #d8d1ff}
+.answer{background:#f9f8ff;border:2px solid #dedcf9;box-shadow:none;color:#2c2a63;min-height:52px}
+.answer:hover:not(:disabled){background:#eeedff;box-shadow:none;border-color:#9282f0}
+.answer.chosen{background:#e5e1ff;border-color:#7860eb}
+.chip{border-radius:99px;background:#d5ffef;color:#116e61}
+input{border:2px solid #d1d0eb;background:#fdfcff}
+.muted{color:#67638c}
+.study{border-radius:17px;border:2px solid #ccece5;border-left:7px solid #22b6a4;background:#effcf8;padding:15px;margin:12px 0}
+.study:nth-child(3n+2){border-left-color:#ffc548;background:#fff8e7}
+.study:nth-child(3n){border-left-color:#b58be8;background:#f7efff}
+.tile{border-radius:18px;border:2px solid #e3e2f8;box-shadow:3px 4px 0 #eeedff;background:#f9faff;min-height:110px}
+.tile:nth-child(5n+2){background:#fff8e6}.tile:nth-child(5n+3){background:#fff1f7}.tile:nth-child(5n+4){background:#effcf6}.tile:nth-child(5n+5){background:#f5f0ff}
+.tile .emoji{display:block;font-size:2rem;margin-bottom:5px}
+.tile strong{display:block;font-size:1.08rem;margin-bottom:5px}
+progress{height:16px;accent-color:#18bda4}
+.chat{background-image:linear-gradient(#e8e7f588 1px,transparent 1px),linear-gradient(90deg,#e8e7f588 1px,transparent 1px);background-size:24px 24px;border:2px solid #e4e3f4}
+.bot{background:#e3faf4}.student{background:#e6e5ff}
+.math-eyebrow{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#695acc}
+@keyframes mathFloat{0%,100%{translate:0 0;rotate:-3deg}50%{translate:0 -15px;rotate:4deg}}
+@media(max-width:760px){.hero:after{opacity:.13;right:0;top:5%}.hero h1{max-width:100%}}
+@media(max-width:600px){main{padding:0 14px}.hero{padding:32px 23px;box-shadow:5px 6px 0 #cbc3ff}.hero h1{font-size:2.3rem}.hero p{font-size:1rem}.card{padding:19px}header b{font-size:1.05rem}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+.whiteboard{border:3px solid #4544a8;border-radius:18px;overflow:hidden;margin:20px 0;box-shadow:5px 6px 0 #d9d8ff}.wbh{background:#343b8d;color:white;padding:14px;font-weight:800}.wbp{background-color:#fcfdff;background-image:linear-gradient(#918ed41b 1px,transparent 1px),linear-gradient(90deg,#918ed41b 1px,transparent 1px);background-size:24px 24px;text-align:center;padding:18px}.wbmath{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:800;color:#4c4aa4;margin:12px}.wbnote{background:#e5faf1;padding:13px;border-radius:12px;margin:13px auto;max-width:550px}.wbnav{background:#f6f4ff;padding:14px;display:flex;flex-wrap:wrap;justify-content:center;gap:9px}.wbsvg{width:min(100%,370px);height:125px}.wbsmall{color:#777297;font-size:.82rem}
+.ai-panel{border:2px solid #ccc7f0;border-radius:18px;padding:16px;background:#fcfbff;margin:16px 0}
+.ai-log{height:300px;overflow:auto;background:white;border:2px solid #dedcf5;border-radius:13px;padding:12px;margin:14px 0}
+.ai-bubble{white-space:pre-wrap;overflow-wrap:anywhere;background:#e1f9f3;padding:12px 14px;border-radius:13px;margin:9px 10% 9px 0;line-height:1.5}
+.ai-bubble.me{background:#e8e6ff;margin:9px 0 9px 10%}
+.ai-row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.ai-row textarea{font:inherit;flex:1;min-width:190px;border:2px solid #cecaee;border-radius:12px;padding:12px;min-height:70px}.ai-panel input{border:2px solid #cecaee}.ai-status{font-size:.85rem;color:#625a82}
+</style></head><body>
+<header><b>🎓 GED Math Academy <span>· Cristóbal</span></b><div class="flex"><button class="light" id="lang" onclick="toggleLang()">Español / English</button><button class="light" onclick="renderHome()">Inicio</button></div></header>
+<main id="app"></main><footer>Independent educational prototype · Not affiliated with GED Testing Service · Diagnostic results are not official GED scores.</footer>
+<script>
+const TOPICS=['Operaciones','Fracciones y porcentajes','Álgebra','Geometría','Gráficas y datos'];
+const EN=['Operations','Fractions and percentages','Algebra','Geometry','Graphs and data'];
+const Q=[
+[0,0,'¿Cuánto es 8 + 7?','What is 8 + 7?',[13,15,16,17],1,'Suma las unidades.','Add the units.'],
+[0,0,'¿Cuánto es 9 × 6?','What is 9 × 6?',[45,54,63,56],1,'Piensa en grupos iguales.','Think in equal groups.'],
+[0,1,'Calcula 48 ÷ 6.','Calculate 48 ÷ 6.',[6,7,8,9],2,'Busca el número que multiplicado por seis da 48.','Find the number that times six makes 48.'],
+[0,1,'¿Cuánto es −5 + 12?','What is −5 + 12?',[5,6,7,17],2,'Usa una recta numérica.','Use a number line.'],
+[0,2,'Calcula 3 × (4 + 5).','Calculate 3 × (4 + 5).',[17,27,35,60],1,'Resuelve primero el paréntesis.','Work inside parentheses first.'],
+[1,0,'¿Cuánto es 1/2 de 20?','What is 1/2 of 20?',[5,8,10,12],2,'Dividir entre dos encuentra la mitad.','Dividing by two finds half.'],
+[1,0,'¿Qué decimal equivale a 1/4?','Which decimal equals 1/4?',[0.2,0.25,0.4,0.75],1,'Divide el numerador entre el denominador.','Divide numerator by denominator.'],
+[1,1,'¿Cuánto es 20% de 80?','What is 20% of 80?',[8,12,16,20],2,'Expresa el porcentaje como decimal.','Write percent as a decimal.'],
+[1,1,'Suma 1/2 + 1/4.','Add 1/2 + 1/4.',['1/4','2/6','3/4','1'],2,'Usa un denominador común.','Use a common denominator.'],
+[1,2,'Una camisa de $60 tiene 25% de descuento. ¿Precio final?','A $60 shirt is 25% off. Final price?', [15,40,45,50],2,'Calcula el descuento y réstalo del precio original.','Find the discount and subtract it.'],
+[2,0,'Si x + 5 = 12, ¿cuánto es x?','If x + 5 = 12, what is x?', [5,6,7,8],2,'Haz la operación inversa.','Use the inverse operation.'],
+[2,0,'Si 3x = 18, ¿cuánto es x?','If 3x = 18, what is x?', [3,5,6,9],2,'Divide ambos lados por el mismo número.','Divide both sides by the same number.'],
+[2,1,'Resuelve 2x + 4 = 16.','Solve 2x + 4 = 16.',[4,5,6,8],2,'Despeja primero 2x.','Isolate 2x first.'],
+[2,1,'Simplifica 4x + 3x − 2x.','Simplify 4x + 3x − 2x.',['3x','5x','7x','9x'],1,'Agrupa términos semejantes.','Combine like terms.'],
+[2,2,'Resuelve 5(x − 2) = 25.','Solve 5(x − 2) = 25.',[3,5,7,10],2,'Divide ambos lados entre cinco primero.','Divide both sides by five first.'],
+[2,2,'Si y = 2x + 3 y x = 4, ¿cuánto es y?','If y = 2x + 3 and x = 4, what is y?', [8,9,11,14],2,'Sustituye el valor dado.','Substitute the given value.'],
+[3,0,'Un cuadrado tiene lados de 5 cm. ¿Perímetro?','A square has 5 cm sides. Perimeter?', ['10 cm','15 cm','20 cm','25 cm'],2,'Suma los cuatro lados.','Add all four sides.'],
+[3,0,'Un rectángulo mide 6 por 4. ¿Área?','A rectangle is 6 by 4. Area?',[10,20,24,28],2,'Multiplica largo por ancho.','Multiply length by width.'],
+[3,1,'Un triángulo tiene base 10 y altura 6. ¿Área?','A triangle has base 10 and height 6. Area?',[16,25,30,60],2,'Calcula la mitad del rectángulo equivalente.','Find half the matching rectangle.'],
+[3,1,'Un círculo tiene radio 3. Usando π ≈ 3.14, ¿área aproximada?','A circle has radius 3. Using π ≈ 3.14, approximate area?',[9.42,18.84,28.26,36],2,'Usa el radio al cuadrado.','Square the radius.'],
+[3,2,'Un triángulo rectángulo tiene catetos 3 y 4. ¿Hipotenusa?','A right triangle has legs 3 and 4. Hypotenuse?',[5,6,7,8],0,'Aplica Pitágoras.','Use the Pythagorean theorem.'],
+[4,0,'¿Cuál es la media de 2, 4 y 6?','What is the mean of 2, 4 and 6?',[3,4,5,6],1,'Suma los valores y divide entre tres.','Add the values and divide by three.'],
+[4,0,'¿Cuál es la mediana de 1, 3, 9?','What is the median of 1, 3, 9?',[1,3,4,9],1,'Encuentra el valor central.','Find the middle value.'],
+[4,1,'Hay 2 bolas rojas y 3 azules. ¿Probabilidad de roja?','There are 2 red balls and 3 blue. Probability of red?', ['1/5','2/5','3/5','2/3'],1,'Compara resultados favorables con el total.','Compare favorable outcomes with the total.'],
+[4,1,'En y = 3x + 2, ¿cuál es la pendiente?','In y = 3x + 2, what is the slope?',[2,3,5,6],1,'Observa el coeficiente de x.','Look at the coefficient of x.'],
+[4,2,'Para x = 1, 2, 3 y y = 4, 7, 10, ¿cuánto aumenta y por cada x?','For x = 1, 2, 3 and y = 4, 7, 10, how much does y increase per x?',[2,3,4,6],1,'Compara las diferencias entre valores sucesivos.','Compare changes between consecutive values.'],
+[0,2,'Calcula (18 − 6) ÷ 3 + 2.','Calculate (18 − 6) ÷ 3 + 2.',[4,6,8,10],1,'Aplica el orden de operaciones.','Follow order of operations.'],
+[1,2,'¿Cuánto es 0.6 × 0.5?','What is 0.6 × 0.5?',[0.03,0.3,1.1,3],1,'Multiplica como enteros y coloca el decimal.','Multiply as integers and place the decimal.'],
+[2,2,'Resuelve 4x − 7 = 17.','Solve 4x − 7 = 17.',[4,5,6,8],2,'Despeja el término con x antes de dividir.','Isolate the x term before dividing.'],
+[3,2,'Un prisma mide 2 × 3 × 5. ¿Volumen?','A prism measures 2 × 3 × 5. Volume?',[10,15,25,30],3,'Multiplica las tres dimensiones.','Multiply all three dimensions.']
+];
+let lang=localStorage.getItem('ged_lang')||'es',student=JSON.parse(localStorage.getItem('ged_student')||'null'),result=JSON.parse(localStorage.getItem('ged_result')||'null'),session=null,selected=null,feedback=false,chat=[];
+const t=(es,en)=>lang==='es'?es:en, topic=i=>lang==='es'?TOPICS[i]:EN[i],app=()=>document.getElementById('app');
+function save(){localStorage.setItem('ged_lang',lang);localStorage.setItem('ged_student',JSON.stringify(student));localStorage.setItem('ged_result',JSON.stringify(result))}
+function toggleLang(){lang=lang==='es'?'en':'es';save();if(session)renderQuestion();else renderHome()}
+function card(content){return '<section class="card">'+content+'</section>'}
+function renderHome(){session=null;let h='<div class="hero"><span class="chip">GED Math · '+t('En español e inglés','Spanish and English')+'</span><h1>'+t('Aprende matemáticas con el Profesor Cristóbal','Learn math with Professor Cristóbal')+'</h1><p>'+t('Primero descubrimos lo que ya sabes. Después te enseñamos exactamente lo que necesitas para preparar el examen de matemáticas GED.','First we find out what you know. Then we teach exactly what you need to prepare for GED Math.')+'</p></div>';
+h+=card('<h2>'+t('¡Descubre tu poder matemático!','Discover your math superpower!')+'</h2><p class="muted">'+t('20 retos cortos, sin reloj ni presión. Al final tendrás tu mapa de estudio.','20 bite-sized challenges, no clock or pressure. Get your personal study map.')+'</p><label>'+t('Tu nombre o apodo (no uses información confidencial)','Your name or nickname (do not enter sensitive information)')+'</label><input id="name" maxlength="45" value="'+escapeHTML(student?.name||'')+'" placeholder="'+t('Nombre','Name')+'"><div style="margin-top:15px"><button onclick="startTest()">'+t('¡Vamos! Empezar mi reto ✨','Let’s go! Start my challenge ✨')+'</button></div>');
+if(result)h+=card('<div class="flex"><h2>'+t('Tu último resultado','Your last result')+'</h2><span class="chip">'+result.correct+'/'+result.answers.length+'</span></div><p>'+t('Continúa con tus lecciones y práctica personalizada.','Continue with personalized lessons and practice.')+'</p><button onclick="renderResults()">'+t('Ver mi plan','View my plan')+'</button> <button class="ghost" onclick="renderTeacher()">'+t('Practicar con Cristóbal','Practice with Cristóbal')+'</button>');
+h+=card('<p class="math-eyebrow">'+t('Tu aventura matemática','Your math adventure')+'</p><div class="grid">'+['🧮','🍕','🔤','📐','📊'].map((e,i)=>'<div class="tile"><span class="emoji">'+e+'</span><strong>'+topic(i)+'</strong><span class="muted small">'+t('Aprende paso a paso','Learn step by step')+'</span></div>').join('')+'</div>');
+h+=card('<h2>✏️ '+t('¡Pizarra interactiva!','Interactive whiteboard!')+'</h2><p>'+t('Aprende con dibujos y pasos sencillos.','Learn with visuals and easy steps.')+'</p><button onclick="renderTeacher(2)">'+t('Probar la pizarra','Try the whiteboard')+'</button>');
+h+=card('<h2>💬 '+t('¡Habla con Cristóbal!','Chat with Cristóbal!')+'</h2><p>'+t('Pregunta matemáticas en español. El profesor te ayudará a descubrir la respuesta, un paso a la vez. Requiere un código del piloto.','Ask math questions. Your tutor will help you discover answers one step at a time. Pilot code required.')+'</p><button onclick="openAI(2)">'+t('Iniciar conversación ✨','Start conversation ✨')+'</button>');
+h+=card('<h2>'+t('Para educadores','For educators')+'</h2><p class="muted">'+t('Este demostrador guarda datos solamente en este navegador. El panel escolar no contiene cuentas reales de estudiantes.','This demo saves data only in this browser. The school view does not contain real student accounts.')+'</p><button class="ghost" onclick="renderSchool()">'+t('Vista de escuela (demo)','School view (demo)')+'</button>');app().innerHTML=h}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function startTest(){const name=document.getElementById('name').value.trim();if(!name){alert(t('Escribe un nombre o apodo.','Enter a name or nickname.'));return}student={name};save();const list=[];for(let a=0;a<5;a++)list.push(Q.findIndex(q=>q[0]===a&&q[1]===0));session={list,answers:[],level:[1,1,1,1,1],seen:new Set(list)};renderQuestion()}
+function nextItem(){let i=session.answers.length;if(i>=20){finish();return}const area=i%5,lev=session.level[area];let ids=Q.map((q,j)=>({q,j})).filter(o=>o.q[0]===area&&!session.seen.has(o.j));if(!ids.length)ids=Q.map((q,j)=>({q,j})).filter(o=>!session.seen.has(o.j));if(!ids.length){finish();return}ids.sort((a,b)=>Math.abs(a.q[1]-lev)-Math.abs(b.q[1]-lev));session.list.push(ids[0].j);session.seen.add(ids[0].j)}
+function renderQuestion(){if(!session)return;let i=session.answers.length;let id=session.list[i];if(id===undefined){nextItem();return}let q=Q[id];selected=null;feedback=false;app().innerHTML=card('<div class="flex"><span class="chip">'+t('Diagnóstico','Diagnostic')+' · '+(i+1)+'/20</span><span>'+topic(q[0])+'</span></div><progress value="'+i+'" max="20"></progress><h2>'+q[lang==='es'?2:3]+'</h2><div id="answers">'+q[4].map((v,j)=>'<button class="answer" id="a'+j+'" onclick="choose('+j+')">'+escapeHTML(v)+'</button>').join('')+'</div><div id="note" class="muted small">'+t('Selecciona una respuesta.','Choose one answer.')+'</div><button id="next" disabled onclick="submitAnswer()">'+t('Continuar','Continue')+'</button>')}
+function choose(i){selected=i;document.querySelectorAll('.answer').forEach((el,j)=>el.classList.toggle('chosen',i===j));document.getElementById('next').disabled=false}
+function submitAnswer(){const i=session.answers.length,qid=session.list[i],q=Q[qid];const correct=selected===q[5];session.answers.push({qid,choice:selected,correct});session.level[q[0]]=Math.max(0,Math.min(2,session.level[q[0]]+(correct?1:-1)));if(session.answers.length<20)nextItem();else {finish();return}renderQuestion()}
+function finish(){let answers=session.answers;result={name:student.name,date:new Date().toISOString(),answers,correct:answers.filter(x=>x.correct).length};session=null;save();renderResults()}
+function stats(){return TOPICS.map((_,i)=>{const a=result.answers.filter(x=>Q[x.qid][0]===i);return{topic:i,count:a.length,correct:a.filter(x=>x.correct).length,ratio:a.length?a.filter(x=>x.correct).length/a.length:0}})}
+function renderResults(){if(!result){renderHome();return}const s=stats().sort((a,b)=>a.ratio-b.ratio),p=Math.round(result.correct/result.answers.length*100);let h=card('<span class="chip">'+t('Plan personalizado','Personalized learning plan')+'</span><h2>'+escapeHTML(result.name)+': '+p+'%</h2><p class="muted">'+t('Resultado educativo preliminar, no puntuación oficial GED.','Preliminary instructional score, not an official GED score.')+'</p><progress max="100" value="'+p+'"></progress><p>'+result.correct+' / '+result.answers.length+' '+t('respuestas correctas','correct answers')+'</p>');
+h+=card('<h2>'+t('Tu mapa para dominar las matemáticas','Your math mastery map')+'</h2>'+s.map((x,j)=>'<div class="study"><b>'+ (j+1)+'. '+topic(x.topic)+'</b> — '+x.correct+'/'+x.count+' '+t('correctas','correct')+'<p class="muted">'+(x.ratio<.6?t('Prioridad: repasar conceptos y practicar.','Priority: review concepts and practice.'):t('Seguir practicando hasta dominar el tema.','Continue practicing toward mastery.'))+'</p><button class="ghost" onclick="renderTeacher('+x.topic+')">'+t('Practicar este tema','Practice this topic')+'</button></div>').join(''));
+h+=card('<h2>'+t('Profesor Cristóbal','Professor Cristóbal')+'</h2><p>'+t('Te acompañaré paso a paso. Resolveremos tus dificultades antes de avanzar a preguntas más difíciles.','I will guide you step by step. We will work through gaps before advancing to harder questions.')+'</p><button onclick="renderTeacher('+s[0].topic+')">'+t('¡A practicar con Cristóbal!','Let’s practice with Cristóbal!')+'</button> <button class="ghost" onclick="renderHome()">'+t('Volver al inicio','Back home')+'</button>');app().innerHTML=h}
+
+const LESSONS_ES=[
+[['(8 + 4) ÷ 3','Primero resuelve los paréntesis.'],['12 ÷ 3','Ahora divide.'],['4','¡Excelente!']],
+[['½ + ¼','Busca denominadores iguales.'],['²⁄₄ + ¼','Una mitad son dos cuartos.'],['¾','Suma 2 y 1 cuartos.']],
+[['2x + 4 = 12','Vamos a despejar x.'],['2x = 8','Resta 4 en ambos lados.'],['x = 4','Divide entre 2.']],
+[['6 × 4','Área = largo × ancho.'],['6 × 4 = 24','Multiplica las dimensiones.'],['24 unidades²','¡Bien hecho!']],
+[['(1,2) → (3,6)','Compara cuánto sube y.'],['Δy=4, Δx=2','Sube 4 y avanza 2.'],['m = 2','La pendiente es 4 ÷ 2.']]
+],LESSONS_EN=[
+[['(8 + 4) ÷ 3','Solve the parentheses first.'],['12 ÷ 3','Now divide.'],['4','Excellent!']],
+[['½ + ¼','Find common denominators.'],['²⁄₄ + ¼','One half is two fourths.'],['¾','Add two and one fourths.']],
+[['2x + 4 = 12','Let’s isolate x.'],['2x = 8','Subtract 4 on both sides.'],['x = 4','Divide by two.']],
+[['6 × 4','Area = length × width.'],['6 × 4 = 24','Multiply the dimensions.'],['24 square units','Nice work!']],
+[['(1,2) → (3,6)','Compare the rise in y.'],['Δy=4, Δx=2','Rise 4, run 2.'],['m = 2','Slope is 4 ÷ 2.']]
+];
+let wbStep=0;
+function wbPicture(area,step){
+if(area===3){let shapes='';for(let i=0;i<6;i++)for(let j=0;j<4;j++)shapes+='<rect x="'+(40+i*45)+'" y="'+(3+j*29)+'" width="45" height="29" fill="'+(step?'#9be8d4':'#e2e3ff')+'" stroke="#7874b4"/>';return '<svg class="wbsvg" role="img" aria-label="'+t('Rectángulo de 6 por 4','Rectangle 6 by 4')+'" viewBox="0 0 370 125">'+shapes+'</svg>'}
+if(area===4)return '<svg class="wbsvg" role="img" aria-label="'+t('Gráfica creciente','Rising graph')+'" viewBox="0 0 370 125"><path d="M35 5V113H340" fill="none" stroke="#6767a1" stroke-width="3"/><path d="M80 104L280 20" stroke="#5b5ada" stroke-width="5"/><circle cx="80" cy="104" r="7" fill="#ff8caf"/><circle cx="280" cy="20" r="7" fill="#15bcac"/></svg>';
+let r='',count=area===1?4:8;for(let i=0;i<count;i++)r+='<rect x="'+(area===1?45+i*70:34+(i%4)*76)+'" y="'+(area===1?38:4+Math.floor(i/4)*60)+'" width="55" height="49" rx="8" fill="'+(area===1&&i>=(step?3:2)?'#fff':'#96e6d3')+'" stroke="#6b66b2" stroke-width="2"/>';return '<svg class="wbsvg" role="img" aria-label="'+t('Bloques matemáticos','Math blocks')+'" viewBox="0 0 370 125">'+r+'</svg>'
+}
+function boardRender(){const el=document.getElementById('whiteboard');if(!el)return;const steps=(lang==='es'?LESSONS_ES:LESSONS_EN)[practiceTopic],p=steps[wbStep];el.innerHTML='<div class="wbh">✏️ '+t('Pizarra del Profesor Cristóbal','Professor Cristóbal’s whiteboard')+'</div><div class="wbp"><div class="wbsmall">'+topic(practiceTopic)+' · '+t('Paso','Step')+' '+(wbStep+1)+' / '+steps.length+'</div><div class="wbmath" aria-live="polite">'+p[0]+'</div>'+wbPicture(practiceTopic,wbStep)+'<div class="wbnote" aria-live="polite">'+p[1]+'</div></div><div class="wbnav"><button class="ghost" onclick="boardMove(-1)" '+(wbStep===0?'disabled':'')+'>'+t('← Atrás','← Back')+'</button><button onclick="boardMove(1)" '+(wbStep===steps.length-1?'disabled':'')+'>'+t('Siguiente →','Next →')+'</button><button class="ghost" onclick="boardMove(-99)">'+t('Repetir ↻','Replay ↻')+'</button></div>'}
+function boardMove(n){const count=(lang==='es'?LESSONS_ES:LESSONS_EN)[practiceTopic].length;wbStep=n===-99?0:Math.max(0,Math.min(count-1,wbStep+n));boardRender()}
+
+let practiceTopic=0,practiceId=null,practicePicked=null;
+function renderTeacher(area){practiceTopic=area===undefined?(result?stats().sort((a,b)=>a.ratio-b.ratio)[0].topic:0):area;let ids=Q.map((q,i)=>({q,i})).filter(x=>x.q[0]===practiceTopic&&x.q[1]<=1);practiceId=ids[Math.floor(Math.random()*ids.length)].i;practicePicked=null;wbStep=0;let q=Q[practiceId];app().innerHTML=card('<div class="flex"><span class="chip">👨‍🏫 Profesor Cristóbal</span><span>'+topic(practiceTopic)+'</span></div><h2>'+t('¡Hora de entrenar el cerebro!','Time for a brain workout!')+'</h2><div id="whiteboard" class="whiteboard"></div><div class="chat" id="chat"><div class="bubble bot">'+t('¡Hey! Soy Cristóbal 👋 Aquí los errores nos enseñan. ¡Tú puedes!','Hey! Cristóbal here 👋 Mistakes help us learn. You’ve got this!')+'</div><div class="bubble bot">'+q[lang==='es'?2:3]+'</div></div><div id="practice">'+q[4].map((v,i)=>'<button class="answer" onclick="checkPractice('+i+')">'+escapeHTML(v)+'</button>').join('')+'</div><p><button class="ghost" onclick="hint()">'+t('Dame una pista','Give me a hint')+'</button> <button class="ghost" onclick="renderTeacher('+practiceTopic+')">'+t('Otro ejercicio','Another exercise')+'</button> <button class="ghost" onclick="renderResults()">'+t('Mi plan','My plan')+'</button></p><div class="small muted">'+t('Demostración de tutor guiado. Conversación de IA en vivo disponible en una fase posterior.','Guided tutor demo. Live AI conversation is a future development phase.')+'</div>');boardRender()}
+function say(s,who='bot'){let d=document.createElement('div');d.className='bubble '+who;d.textContent=s;let box=document.getElementById('chat');box.appendChild(d);box.scrollTop=box.scrollHeight}
+function hint(){say(Q[practiceId][lang==='es'?6:7])}
+function checkPractice(i){if(practicePicked!==null)return;practicePicked=i;let q=Q[practiceId],good=i===q[5];say(String(q[4][i]),'student');say(good?t('¡Muy bien! Entendiste este ejercicio. Prueba otro para confirmar.','Well done! Try another to confirm your understanding.'):t('Todavía no. La respuesta es ','Not yet. The answer is ')+String(q[4][q[5]])+'. '+q[lang==='es'?6:7]);document.querySelectorAll('#practice .answer').forEach((el,j)=>{el.disabled=true;if(j===q[5])el.classList.add('correct');else if(j===i)el.classList.add('wrong')})}
+function renderSchool(){let h=card('<h2>'+t('Panel de escuela — demostración local','School dashboard — local demo')+'</h2><p class="muted">'+t('No es un sistema de cuentas escolares: solo muestra las evaluaciones guardadas en este dispositivo. No usar para registros reales de estudiantes.','This is not a school account system: it shows only assessment data stored on this device. Do not use for real student records.')+'</p>');if(result)h+='<table><thead><tr><th>'+t('Estudiante','Student')+'</th><th>'+t('Puntuación','Score')+'</th><th>'+t('Fecha','Date')+'</th></tr></thead><tbody><tr><td>'+escapeHTML(result.name)+'</td><td>'+result.correct+'/'+result.answers.length+'</td><td>'+escapeHTML(result.date.slice(0,10))+'</td></tr></tbody></table><p><button class="ghost" onclick="exportCSV()">'+t('Exportar CSV local','Export local CSV')+'</button></p>';else h+='<p>'+t('Todavía no hay resultados en este navegador.','No results in this browser yet.')+'</p>';h+='</section>';app().innerHTML=h}
+function exportCSV(){if(!result)return;const rows=['name,date,correct,total','"'+result.name.replace(/"/g,'""')+'",'+result.date+','+result.correct+','+result.answers.length];let b=new Blob([rows.join('\n')],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(b),a=document.createElement('a');a.href=url;a.download='ged-demo-results.csv';a.click();URL.revokeObjectURL(url)}
+
+let aiTopic=2,aiHistory=[],aiBusy=false,aiLast='';
+function openAI(area){
+ aiTopic=Number.isInteger(area)&&area>=0&&area<5?area:2;aiHistory=[];aiLast='';
+ app().innerHTML=card('<div class="flex"><span class="chip">💬 '+t('Habla con el Profesor Cristóbal','Chat with Professor Cristóbal')+'</span><button class="ghost" onclick="renderHome()">'+t('Inicio','Home')+'</button></div><h2>'+t('¿Qué quieres aprender hoy?','What would you like to learn today?')+'</h2><p>'+t('Pregúntame sin miedo. Vamos paso a paso, a tu ritmo.','Ask anything about math. We will go step by step, at your pace.')+'</p><div class="ai-panel"><label for="aiTopic">'+t('Tema','Topic')+'</label><select id="aiTopic" onchange="aiChange(this.value)">'+TOPICS.map((_,i)=>'<option value="'+i+'" '+(i===aiTopic?'selected':'')+'>'+topic(i)+'</option>').join('')+'</select><label for="aiAccess">'+t('Código del piloto (entregado por el administrador)','Pilot code (from administrator)')+'</label><input type="password" id="aiAccess" autocomplete="off" maxlength="128" placeholder="'+t('Código de acceso','Access code')+'"><p class="ai-status">'+t('El tutor en vivo requiere activación segura en Cloudflare. No escribas información personal.','Live AI requires secure activation in Cloudflare. Do not enter personal information.')+'</p><div class="ai-log" role="log" aria-live="polite" id="aiLog"></div><div class="ai-row"><textarea id="aiInput" maxlength="600" placeholder="'+t('Ejemplo: No entiendo las fracciones','Example: I do not understand fractions')+'"></textarea><button id="aiSend" onclick="sendAI()">'+t('Enviar ✨','Send ✨')+'</button><button class="ghost" onclick="readAI()" title="'+t('Leer en voz alta','Read aloud')+'">🔊</button></div><p id="aiStatus" role="status" class="ai-status"></p></div><button class="ghost" onclick="renderTeacher(aiTopic)">'+t('Ir a la pizarra','Go to whiteboard')+'</button>');
+ addAI('assistant',t('¡Hola! Soy Cristóbal. ¿Cuál es tu pregunta de matemáticas?','Hi! I am Cristóbal. What is your math question?'));
+}
+function addAI(role,text){const log=document.getElementById('aiLog');if(!log)return;const el=document.createElement('div');el.className='ai-bubble'+(role==='user'?' me':'');el.textContent=text;log.appendChild(el);log.scrollTop=log.scrollHeight}
+function aiChange(value){const x=Number(value);if(!Number.isInteger(x)||x<0||x>4)return;aiTopic=x;aiHistory=[];aiLast='';document.getElementById('aiLog').replaceChildren();addAI('assistant',t('¡Ahora practicamos ','Now we practice ')+topic(aiTopic)+'.')}
+async function sendAI(){
+ if(aiBusy)return;const box=document.getElementById('aiInput'),code=document.getElementById('aiAccess').value.trim(),status=document.getElementById('aiStatus'),button=document.getElementById('aiSend');
+ const msg=box.value.trim();if(!msg){status.textContent=t('Escribe tu pregunta.','Write your question.');return}
+ if(code.length<12){status.textContent=t('Necesitas el código del piloto.','You need the pilot access code.');return}
+ aiBusy=true;button.disabled=true;box.value='';status.textContent=t('Cristóbal está pensando…','Cristóbal is thinking…');addAI('user',msg);
+ const history=[...aiHistory,{role:'user',content:msg}].slice(-10);
+ try{
+ const response=await fetch('/api/tutor',{method:'POST',headers:{'Content-Type':'application/json','X-Tutor-Code':code},body:JSON.stringify({topic:aiTopic,locale:lang,messages:history})});
+ const data=await response.json().catch(()=>({}));
+ if(!response.ok)throw new Error(data.error||t('El servicio de IA no está disponible.','AI service is not available.'));
+ if(typeof data.reply!=='string'||!data.reply.trim())throw Error(t('Respuesta vacía.','Empty response.'));
+ aiLast=data.reply.trim();addAI('assistant',aiLast);aiHistory=[...history,{role:'assistant',content:aiLast.slice(0,600)}].slice(-8);
+ status.textContent=t('¡Muy bien! Sigue preguntando.','Great! Keep asking.');
+ }catch(err){status.textContent=t('No se pudo conectar: ','Could not connect: ')+(err.message||'')+' '+t('Puedes practicar en la pizarra mientras tanto.','You can practice on the whiteboard meanwhile.')}
+ finally{aiBusy=false;button.disabled=false;box.focus()}
+}
+function readAI(){if(!aiLast||!('speechSynthesis' in window))return;window.speechSynthesis.cancel();const x=new SpeechSynthesisUtterance(aiLast);x.lang=lang==='es'?'es-ES':'en-US';x.rate=.9;window.speechSynthesis.speak(x)}
+
+renderHome();
+</script></body></html>
