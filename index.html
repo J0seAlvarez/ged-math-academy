@@ -110,6 +110,7 @@ function submitAnswer(){const i=session.answers.length,qid=session.list[i],q=Q[q
 function finish(){let answers=session.answers;result={name:student.name,date:new Date().toISOString(),answers,correct:answers.filter(x=>x.correct).length};session=null;save();renderResults()}
 function stats(){return TOPICS.map((_,i)=>{const a=result.answers.filter(x=>Q[x.qid][0]===i);return{topic:i,count:a.length,correct:a.filter(x=>x.correct).length,ratio:a.length?a.filter(x=>x.correct).length/a.length:0}})}
 function renderResults(){if(!result){renderHome();return}const s=stats().sort((a,b)=>a.ratio-b.ratio),p=Math.round(result.correct/result.answers.length*100);let h=card('<span class="chip">'+t('Plan personalizado','Personalized learning plan')+'</span><h2>'+escapeHTML(result.name)+': '+p+'%</h2><p class="muted">'+t('Resultado educativo preliminar, no puntuación oficial GED.','Preliminary instructional score, not an official GED score.')+'</p><progress max="100" value="'+p+'"></progress><p>'+result.correct+' / '+result.answers.length+' '+t('respuestas correctas','correct answers')+'</p>');
+h+=card('<h2>💾 '+t('Guardar resultado de prueba','Save test result')+'</h2><p class="muted">'+t('Solo disponible en localhost. Usa un apodo y datos de prueba; no ingreses información de estudiantes reales.','Only on localhost. Use a nickname and test data; do not enter real student information.')+'</p><p><button onclick="saveDemoProgress()">'+t('Guardar en D1 local','Save to local D1')+'</button> <button class="ghost" onclick="loadDemoProgress()">'+t('Ver progreso guardado','View saved progress')+'</button></p><p id="saveDemoStatus" role="status" class="muted"></p><div id="savedProgress"></div>');
 h+=card('<h2>'+t('Tu mapa para dominar las matemáticas','Your math mastery map')+'</h2>'+s.map((x,j)=>'<div class="study"><b>'+ (j+1)+'. '+topic(x.topic)+'</b> — '+x.correct+'/'+x.count+' '+t('correctas','correct')+'<p class="muted">'+(x.ratio<.6?t('Prioridad: repasar conceptos y practicar.','Priority: review concepts and practice.'):t('Seguir practicando hasta dominar el tema.','Continue practicing toward mastery.'))+'</p><button class="ghost" onclick="renderTeacher('+x.topic+')">'+t('Practicar este tema','Practice this topic')+'</button></div>').join(''));
 h+=card('<h2>'+t('Profesor Cristóbal','Professor Cristóbal')+'</h2><p>'+t('Te acompañaré paso a paso. Resolveremos tus dificultades antes de avanzar a preguntas más difíciles.','I will guide you step by step. We will work through gaps before advancing to harder questions.')+'</p><button onclick="renderTeacher('+s[0].topic+')">'+t('¡A practicar con Cristóbal!','Let’s practice with Cristóbal!')+'</button> <button class="ghost" onclick="renderHome()">'+t('Volver al inicio','Back home')+'</button>');app().innerHTML=h}
 
@@ -168,6 +169,42 @@ async function sendAI(){
  finally{aiBusy=false;button.disabled=false;box.focus()}
 }
 function readAI(){if(!aiLast||!('speechSynthesis' in window))return;window.speechSynthesis.cancel();const x=new SpeechSynthesisUtterance(aiLast);x.lang=lang==='es'?'es-ES':'en-US';x.rate=.9;window.speechSynthesis.speak(x)}
+
+
+function demoLearnerId(){
+ let id=localStorage.getItem('ged_demo_learner_id');
+ if (!id || !/^demo-[0-9a-f-]{36}$/i.test(id)) {id='demo-'+crypto.randomUUID();localStorage.setItem('ged_demo_learner_id',id)}
+ return id;
+}
+function localStatus(value){const el=document.getElementById('saveDemoStatus');if(el)el.textContent=value}
+async function saveDemoProgress(){
+ if(!result){localStatus(t('Primero completa un examen.','Complete an assessment first.'));return}
+ if(!['localhost','127.0.0.1'].includes(location.hostname)){localStatus(t('Disponible solamente en desarrollo local.','Available in local development only.'));return}
+ const payload={learnerId:demoLearnerId(),displayName:result.name,locale:lang,answers:result.answers};
+ try{
+  localStatus(t('Guardando resultado de prueba…','Saving test result…'));
+  const r=await fetch('/api/dev/progress',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  const data=await r.json();
+  if(!r.ok)throw Error(data.error||'Error');
+  localStatus(t('¡Guardado en D1 local!','Saved to local D1!'));
+  await loadDemoProgress(true);
+ }catch(err){localStatus(t('No se pudo guardar: ','Could not save: ')+err.message)}
+}
+async function loadDemoProgress(silent=false){
+ if(!['localhost','127.0.0.1'].includes(location.hostname)){localStatus(t('Disponible solamente en desarrollo local.','Available in local development only.'));return}
+ try{
+  const r=await fetch('/api/dev/progress?learnerId='+encodeURIComponent(demoLearnerId()),{headers:{'Accept':'application/json'}});
+  const data=await r.json();
+  if(!r.ok)throw Error(data.error||'Error');
+  const el=document.getElementById('savedProgress');if(!el)return;
+  const a=data.latestAttempt;
+  el.replaceChildren();
+  const p=document.createElement('p');
+  p.textContent=a?t('Último examen guardado: ','Latest saved assessment: ')+a.correct_answers+'/'+a.total_answers+' · '+a.completed_at:t('Todavía no hay evaluaciones guardadas.','No saved assessments yet.');
+  el.appendChild(p);
+  if(!silent)localStatus(t('Progreso local actualizado.','Local progress refreshed.'));
+ }catch(err){localStatus(t('No se pudo cargar: ','Could not load: ')+err.message)}
+}
 
 renderHome();
 </script></body></html>
