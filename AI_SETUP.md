@@ -12,7 +12,7 @@ This project has a Cloudflare Worker at `src/worker.js` with a static assets fol
 4. Under **Settings → Variables and Secrets**, create two **encrypted Secrets**:
    - `OPENAI_API_KEY`: your OpenAI API project key.
    - `TUTOR_ACCESS_CODE`: a unique long random code (at least 12 characters) to share *only* with trusted pilot testers. Do not place it in GitHub.
-5. Set the Worker **variable** `TUTOR_ENABLED` to `true`. This overrides the `false` value in Wrangler; if Wrangler redeploys with false, change the checked-in config to true only after verifying the secrets, or use an environment-specific deployment configuration. Keep the pilot disabled until the secrets and rate limiting are ready.
+5. Set the Worker **variable** `TUTOR_ENABLED` to `true` (it is deliberately omitted from `wrangler.jsonc` so the pilot starts disabled). Keep the pilot disabled until the secrets and rate limiting are ready. On future deployments, confirm Cloudflare retains that variable and the two secrets.
 6. Set a small OpenAI project budget and configure Cloudflare rate-limiting/WAF rules for `/api/tutor` before public testing. A shared pilot code is a short-term gate, **not user authentication, account-based quotas, or a substitute for server-side abuse prevention**.
 7. Open `teach.j0se.me` and use **Hablar con Cristóbal**. Enter the temporary pilot access code, select a math topic and ask a question.
 
