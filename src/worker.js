@@ -1,3 +1,4 @@
+import { localProgress } from './local-progress.js';
 // GED Math Academy — Profesor Cristóbal
 // Private server-side OpenAI proxy. No API credentials belong in browser code.
 const TOPICS = ["operations", "fractions and percentages", "algebra", "geometry", "graphs and statistics"];
@@ -8,6 +9,7 @@ function reply(status, message) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === "/api/dev/progress") return localProgress(request, env);
     if (url.pathname !== "/api/tutor") {
       return env.ASSETS.fetch(request);
     }
