@@ -10,7 +10,6 @@
     ]
   },
   "vars": {
-    "TUTOR_ENABLED": "false",
     "TUTOR_MODEL": "gpt-6-luna"
   }
 }
